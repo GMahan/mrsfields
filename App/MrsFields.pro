@@ -11,10 +11,10 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = MrsFields
 TEMPLATE = app
 
-macx: LIBS += -L$$PWD/../../Plugins/OptionBoxPlugin/ -lOptionBoxPlugin
+macx: LIBS += -L/Users/MahanMacBook/qtprojects/plugins/ -lOptionBoxPlugin
 
-INCLUDEPATH += $$PWD/../../Plugins/OptionBoxPlugin
-DEPENDPATH += $$PWD/../../Plugins/OptionBoxPlugin
+INCLUDEPATH += ./../plugin/optionbox
+DEPENDPATH += ./../plugin/optionbox
 
 SOURCES += main.cpp\
         mainwindow.cpp \

@@ -15,7 +15,7 @@ TEMPLATE    = lib
 
 TARGET = $$qtLibraryTarget($$TARGET)
 
-target.path = $$[QT_INSTALL_PLUGINS]/designer
+target.path = /Users/MahanMacBook/qtprojects/plugins
 INSTALLS += target
 
 SOURCES +=\

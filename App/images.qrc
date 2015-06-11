@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/Start">
+        <file>Images/StartButtonNormal.png</file>
+        <file>Images/StartButtonPressed.png</file>
+        <file>Images/MrsFieldsLogo.png</file>
+        <file>Images/Help.png</file>
+    </qresource>
+    <qresource prefix="/Common">
+        <file>Images/NextButton.png</file>
+        <file>Images/NextButtonPressed.png</file>
+        <file>Images/BackButton.png</file>
+        <file>Images/BackButtonPressed.png</file>
+        <file>Images/LineSeperator.png</file>
+        <file>Images/OptionBoxSelected.png</file>
+        <file>Images/OptionBoxUnselected.png</file>
+        <file>Images/FooterLogo.png</file>
+    </qresource>
+    <qresource prefix="/Flavor">
+        <file>Images/Chocolate_Chip.png</file>
+        <file>Images/PeanutButter.png</file>
+        <file>Images/Cinnamon-Sticks.png</file>
+        <file>Images/Chocolate.png</file>
+        <file>Images/DarkChocolate.png</file>
+        <file>Images/WhiteChocolate.png</file>
+        <file>Images/Cookie.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/OptionBox">
+        <file>Images/OptionBoxUnselected.png</file>
+        <file>Images/OptionBoxSelected.png</file>
+    </qresource>
+</RCC>
