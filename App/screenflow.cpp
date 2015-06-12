@@ -21,7 +21,9 @@ const ScreenFlow::TransitionTable ScreenFlow::SCREEN_TABLE[Screen::eScreenType_M
 /**
  * @brief ScreenFlow::ScreenFlow constructor
  */
-ScreenFlow::ScreenFlow()
+ScreenFlow::ScreenFlow() :
+    m_screenList(Screen::eScreenType_Max),
+    m_currentScreen(0)
 {
     // Initialize m_ScreenList
 

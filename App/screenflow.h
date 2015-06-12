@@ -48,7 +48,7 @@ class ScreenFlow : public QObject
        void DisplayPrevScreen();
    private:
 
-       ScreenState m_screenList[Screen::eScreenType_Max];
+       QVector<ScreenState> m_screenList;
        //QList<Screen *> m_screenList;
        Screen *m_currentScreen;
 
