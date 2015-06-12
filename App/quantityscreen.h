@@ -34,14 +34,14 @@ public:
 
 signals:
 
-    void QuantitySelected(int);
-    void SizeSelected(const Size &);
+
 
 private slots:
+
     void NextButtonReleased();
     void BackButtonReleased();
     void QuantityChanged();
-    void SizeSelected(int index);
+    void SizeSelection(int index);
 
 private:
 
@@ -59,7 +59,7 @@ private:
     QSignalMapper m_sizeMapper;
     QHBoxLayout m_sizeLayout;
 
-    QList<Size const*> m_sizeList;
+    QList<const Size *> m_sizeList;
     QList<QLabel *> m_quantityLabels;
     QList<OptionBoxWidget *> m_sizeOptionWidgetList;
 

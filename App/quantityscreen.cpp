@@ -90,10 +90,10 @@ void QuantityScreen::QuantityChanged()
 }
 
 /**
- * @brief QuantityScreen::SizeSelected
+ * @brief QuantityScreen::SizeSelection
  * @param index
  */
-void QuantityScreen::SizeSelected(int index)
+void QuantityScreen::SizeSelection(int index)
 {
     // Clear all selections
     foreach(OptionBoxWidget *option, m_sizeOptionWidgetList)
@@ -133,7 +133,7 @@ void QuantityScreen::InitalizeSizeWidgets()
         index++;
     }
 
-    connect(&m_sizeMapper, SIGNAL(mapped(int)), this, SLOT(SizeSelected(int)));
+    connect(&m_sizeMapper, SIGNAL(mapped(int)), this, SLOT(SizeSelection(int)));
 }
 
 /**

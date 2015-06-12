@@ -34,7 +34,10 @@ MainWindow::MainWindow(const Product &product, QWidget *parent) :
         Screen *screen = ScreenFactory(static_cast<Screen::ScreenType_e>(i));
         m_screenList.append(screen);
         m_screenFlow.RegisterScreen(screen);
-        ConnectSignals(static_cast<Screen::ScreenType_e>(i), screen);
+
+        connect(screen, SIGNAL(FlavorSelection(QString)), this, SLOT(FlavorSelected(QString)));
+        connect(screen, SIGNAL(QuantitySelected(int)), this, SLOT(QuantitySelected(int)));
+        connect(screen, SIGNAL(SizeSelected(const Size &)), this, SLOT(SizeSelected(const Size &)));
 
     }
 
@@ -167,32 +170,5 @@ Screen *MainWindow::ScreenFactory(Screen::ScreenType_e screenType)
             return new ProcessingScreen(m_product, this);
         default:
             return 0;
-    }
-}
-
-void MainWindow::ConnectSignals(Screen::ScreenType_e screenType, Screen* screen)
-{
-    switch (screenType)
-    {
-        case Screen::eScreenType_Start:
-            return;
-        case Screen::eScreenType_Flavor:
-            connect(screen, SIGNAL(FlavorSelection(QString)), this, SLOT(FlavorSelected(QString)));
-            return;
-        case Screen::eScreenType_Quantity_Size:
-            connect(screen, SIGNAL(QuantitySelected(int)), this, SLOT(QuantitySelected(int)));
-            connect(screen, SIGNAL(SizeSelected(const Size &)), this, SLOT(SizeSelected(const Size &)));
-            return;
-        case Screen::eScreenType_Package_Crisp:
-            return;
-        case Screen::eScreenType_OrderSummary:
-            return;
-        case Screen::eScreenType_Processing:
-            return;
-        default:
-            return;
-
-
-
     }
 }

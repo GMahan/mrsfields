@@ -35,6 +35,4 @@ private:
     double m_price;
 };
 
-Q_DECLARE_METATYPE(Size)
-
 #endif // SIZE_H

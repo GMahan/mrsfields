@@ -46,9 +46,6 @@ private:
     void InitializeOrderProgressWidget();
     bool InitializeScreens();
     Screen *ScreenFactory(Screen::ScreenType_e screenType);
-    void ConnectSignals(Screen::ScreenType_e screenType, Screen *screen);
-
-
 };
 
 #endif // MAINWINDOW_H

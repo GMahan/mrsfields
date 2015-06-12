@@ -2,8 +2,10 @@
 #define SCREEN_H
 
 #include "product.h"
+#include "size.h"
 #include <QWidget>
 
+class Screen;
 
 class Screen : public QWidget
 {
@@ -35,6 +37,9 @@ class Screen : public QWidget
 
         void Next();
         void Back();
+        void FlavorSelection(QString flavor);
+        void QuantitySelected(int);
+        void SizeSelected(const Size &);
 
     protected:
 
@@ -46,5 +51,7 @@ class Screen : public QWidget
         QString m_screenName;
 
 };
+
+Q_DECLARE_METATYPE(Size)
 
 #endif // SCREEN_H

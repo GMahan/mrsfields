@@ -31,7 +31,7 @@ class FlavorScreen : public Screen
 
     signals:
 
-        void FlavorSelection(QString flavor);
+
 
     private slots:
 
