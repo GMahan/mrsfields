@@ -99,19 +99,6 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="CookieLabel">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>180</y>
-     <width>200</width>
-     <height>200</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>

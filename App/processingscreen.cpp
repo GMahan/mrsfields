@@ -22,8 +22,6 @@ ProcessingScreen::ProcessingScreen(const Product &product, QWidget *parent, cons
 
     UpdateFontProperties();
 
-    ui->CookieLabel->installEventFilter(this);
-
     m_processingTimer = new QTimer(this);
 
     connect(m_processingTimer, SIGNAL(timeout()), this, SLOT(UpdateRemainingTime()));
