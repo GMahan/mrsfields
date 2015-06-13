@@ -66,17 +66,20 @@ void ProcessingScreen::showEvent(QShowEvent *)
 void ProcessingScreen::paintEvent(QPaintEvent *)
 {
     QRectF rectangle(230, 180, 200, 200);
+    QRectF source(0,0,380,380);
+
+    QImage image(m_product.GetProductImage());
 
     int startAngle = 90 * 16;
     int spanAngle = (360 - (m_secondCount * 360 / PROCESSING_TIME )) * 16;
 
-    QColor color(255,0,0,50);
+    QColor color(255,255,255,150);
     QBrush brush(color);
 
     QPainter painter(this);
     painter.setBrush(brush);
     painter.setPen(Qt::NoPen);
-
+    painter.drawImage(rectangle, image, source);
     painter.drawPie(rectangle, startAngle, spanAngle);
 }
 
