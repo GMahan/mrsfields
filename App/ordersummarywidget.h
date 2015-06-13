@@ -64,6 +64,7 @@ private:
     quint8 m_currentIndex;
     QString m_imageUrl;
 
+    void SetFontProperties();
     void InitializeLabelList();
     void SetDefaultLabelColors();
     void ChangeActiveLabel();

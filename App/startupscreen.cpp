@@ -20,7 +20,7 @@ bool StartupScreen::Init()
     return true;
 }
 
-void StartupScreen::Reset()
+void StartupScreen::ResetScreen()
 {
 
 }

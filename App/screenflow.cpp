@@ -13,7 +13,7 @@ const ScreenFlow::TransitionTable ScreenFlow::SCREEN_TABLE[Screen::eScreenType_M
     {Screen::eScreenType_Flavor,        Screen::eScreenType_Start,          Screen::eScreenType_Quantity_Size},
     {Screen::eScreenType_Quantity_Size, Screen::eScreenType_Flavor,         Screen::eScreenType_Package_Crisp},
     {Screen::eScreenType_Package_Crisp, Screen::eScreenType_Quantity_Size,  Screen::eScreenType_OrderSummary},
-    {Screen::eScreenType_OrderSummary,  Screen::eScreenType_Quantity_Size,  Screen::eScreenType_Processing},
+    {Screen::eScreenType_OrderSummary,  Screen::eScreenType_Package_Crisp,  Screen::eScreenType_Processing},
     {Screen::eScreenType_Processing,    Screen::eScreenType_OrderSummary,   Screen::eScreenType_Start}
 };
 
@@ -80,8 +80,8 @@ bool ScreenFlow::RegisterScreen(Screen *screen)
 
 /**
  * @brief ScreenFlow::DisplayNextScreen
- * Shows the next transition screen.
- * @param screen: Pointer to current screen
+ *
+ * Displays the next transition screen.
  */
 void ScreenFlow::DisplayNextScreen()
 {
@@ -98,8 +98,8 @@ void ScreenFlow::DisplayNextScreen()
 
 /**
  * @brief ScreenFlow::DisplayPrevScreen
+ *
  * Shows the previous transition screen
- * @param screen: Pointer to current screen
  */
 void ScreenFlow::DisplayPrevScreen()
 {
@@ -114,6 +114,11 @@ void ScreenFlow::DisplayPrevScreen()
    emit ScreenPrevious();
 }
 
+/**
+ * @brief ScreenFlow::AppendToScreenList
+ * @param screenToAdd: Pointer to the Screen to add to the list.
+ * @return false if screen type already exists and registred.
+ */
 bool ScreenFlow::AppendToScreenList(Screen *screenToAdd)
 {
     if (m_screenList[screenToAdd->GetScreenType()].screen != 0) {
@@ -128,6 +133,15 @@ bool ScreenFlow::AppendToScreenList(Screen *screenToAdd)
 
 }
 
+/**
+ * @brief ScreenFlow::UpdateScreenStates
+ *
+ * Checks if we have all the screens necessary for
+ * the UI and updates the transition table.
+ *
+ * @return True if all screens are registed for the
+ * UI else false
+ */
 bool ScreenFlow::UpdateScreenStates()
 {
     // Make sure we have all the screens

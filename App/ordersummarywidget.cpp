@@ -17,12 +17,10 @@ OrderSummaryWidget::OrderSummaryWidget(const QString &imageUrl, QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Initialize the label list
-    InitializeLabelList();
-    // Set the default colors
-    SetDefaultLabelColors();
-    // Change the active label color
-    ChangeActiveLabel();
+    SetFontProperties(); // Set the font properties for the widget
+    InitializeLabelList(); // Initialize the label list
+    SetDefaultLabelColors(); // Set the default colors
+    ChangeActiveLabel(); // Change the active label color
 }
 
 /**
@@ -148,6 +146,15 @@ void OrderSummaryWidget::paintEvent(QPaintEvent *)
 {
     GuiCommon::PaintSeparator(this, QPoint(10, 28), QPoint(630, 28));
     GuiCommon::PaintSeparator(this, QPoint(10, 108), QPoint(630, 108));
+}
+
+/**
+ * @brief OrderSummaryWidget::SetFontProperties
+ */
+void OrderSummaryWidget::SetFontProperties()
+{
+    ui->OrderSummaryLabel->setFont(GuiCommon::GetUILabelFont());
+    ui->OrderSummaryLabel->setStyleSheet(GuiCommon::GetUILableStyleSheet());
 }
 
 /**

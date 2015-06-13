@@ -28,7 +28,7 @@ class Screen : public QWidget
         explicit Screen(ScreenType_e screenType, const Product &product, QWidget *parent = 0, const QString &screenName = "noName");
         virtual ~Screen();
         virtual bool Init() = 0;
-        virtual void Reset() = 0;
+        virtual void ResetScreen() = 0;
 
         ScreenType_e GetScreenType() const;
         QString GetScreenName() const;
@@ -37,6 +37,7 @@ class Screen : public QWidget
 
         void Next();
         void Back();
+        void Reset();
         void FlavorSelection(QString flavor);
         void QuantitySelected(int);
         void SizeSelected(const Size &);

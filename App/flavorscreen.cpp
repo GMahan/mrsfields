@@ -23,6 +23,8 @@ FlavorScreen::FlavorScreen(const Product &product, QWidget *parent, const QStrin
 {
     ui->setupUi(this);
 
+    SetLabelFontProperties();
+
     ui->FlavorScrollArea->setLayout(&m_flavorLayout);         // Set layout for flavor scroll area
     ui->AdditionalOptionScrollArea->setLayout(&m_optionsLayout);  // Set layout for additional options scroll
     m_flavors = m_product.GetProductFlavors();  // Get list of product flavors
@@ -56,7 +58,7 @@ bool FlavorScreen::Init()
 /**
  * @brief FlavorScreen::Reset
  */
-void FlavorScreen::Reset()
+void FlavorScreen::ResetScreen()
 {
 
 }
@@ -146,6 +148,18 @@ void FlavorScreen::paintEvent(QPaintEvent *)
 {
     GuiCommon::PaintSeparator(this, QPoint(10, 35), QPoint(630, 35));
     GuiCommon::PaintSeparator(this, QPoint(10, 205), QPoint(630, 205));
+}
+
+/**
+ * @brief FlavorScreen::SetLabelFontProperties
+ */
+void FlavorScreen::SetLabelFontProperties()
+{
+    ui->AdditionalChoiceLabel->setFont(GuiCommon::GetUILabelFont());
+    ui->AdditionalChoiceLabel->setStyleSheet(GuiCommon::GetUILableStyleSheet());
+
+    ui->SelectFlavorLabel->setFont(GuiCommon::GetUILabelFont());
+    ui->SelectFlavorLabel->setStyleSheet(GuiCommon::GetUILableStyleSheet());
 }
 
 /**

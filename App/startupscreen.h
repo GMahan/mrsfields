@@ -15,7 +15,7 @@ class StartupScreen : public Screen
         explicit StartupScreen(const Product &product, QWidget *parent = 0, const QString &screenName ="Start Screen");
         ~StartupScreen();
         bool Init();
-        void Reset();
+        void ResetScreen();
 
     private slots:
 

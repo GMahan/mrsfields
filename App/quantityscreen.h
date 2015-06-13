@@ -30,7 +30,7 @@ public:
     explicit QuantityScreen(const Product &product, QWidget *parent = 0, const QString &screenName ="Quantity Screen");
     ~QuantityScreen();
     bool Init();
-    void Reset();
+    void ResetScreen();
 
 signals:
 

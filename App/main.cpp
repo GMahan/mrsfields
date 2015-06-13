@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "product.h"
+#include "common.h"
 
 #include <QApplication>
 #include <QDebug>
@@ -8,9 +9,14 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    Cookie cookie;
+    // Set the UI Font
+    QGuiApplication::setFont(GuiCommon::GetUILabelFont());
 
-    MainWindow w(cookie);
+    // Instantitate the cookie product
+    Product *cookie = new Cookie;
+
+    // Instantiate the main window screen
+    MainWindow w(*cookie);
 
     if (w.Start()) {
 
@@ -23,5 +29,5 @@ int main(int argc, char *argv[])
         qApp->quit();
     }
 
-
+    delete cookie;
 }

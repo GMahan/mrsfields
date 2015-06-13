@@ -55,7 +55,7 @@ bool QuantityScreen::Init()
 /**
  * @brief QuantityScreen::Reset
  */
-void QuantityScreen::Reset()
+void QuantityScreen::ResetScreen()
 {
 
 }

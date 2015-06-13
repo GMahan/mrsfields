@@ -372,8 +372,7 @@ color:rgb(78, 78, 78)</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:none;
-color:rgb(78, 78, 78)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Order Summary</string>

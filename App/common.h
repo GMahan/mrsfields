@@ -3,8 +3,15 @@
 
 #include <QPoint>
 #include <QWidget>
+#include <QFont>
+#include <QString>
+#include <QLabel>
+#include <QPushButton>
 
 namespace GuiCommon {
+
+    QString GetUILableStyleSheet();
+    QFont GetUILabelFont();
 
     void PaintSeparator(QWidget *widget, QPoint start, QPoint end);
 

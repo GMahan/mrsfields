@@ -32,6 +32,7 @@ MainWindow::MainWindow(const Product &product, QWidget *parent) :
     for (int i = Screen::eScreenType_Start; i < Screen::eScreenType_Max; i++) {
 
         Screen *screen = ScreenFactory(static_cast<Screen::ScreenType_e>(i));
+        screen->raise();
         m_screenList.append(screen);
         m_screenFlow.RegisterScreen(screen);
 
@@ -53,6 +54,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/**
+ * @brief MainWindow::Start
+ * @return
+ */
 bool MainWindow::Start()
 {
     bool status = true;
@@ -152,6 +157,11 @@ bool MainWindow::InitializeScreens()
     return true;
 }
 
+/**
+ * @brief MainWindow::ScreenFactory
+ * @param screenType
+ * @return
+ */
 Screen *MainWindow::ScreenFactory(Screen::ScreenType_e screenType)
 {
     switch (screenType)

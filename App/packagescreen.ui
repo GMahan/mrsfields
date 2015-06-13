@@ -81,8 +81,7 @@ QPushButton{color:rgb(255, 255, 255);}</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(255, 255, 255);
-color:rgb(78, 78, 78)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Select package</string>
@@ -110,8 +109,7 @@ color:rgb(78, 78, 78)</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(255, 255, 255);
-color:rgb(78, 78, 78)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Select crispness</string>
@@ -161,8 +159,7 @@ color:rgb(78, 78, 78)</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(255, 255, 255);
-color:rgb(78, 78, 78)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Chewy</string>
@@ -190,8 +187,7 @@ color:rgb(78, 78, 78)</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(255, 255, 255);
-color:rgb(78, 78, 78)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>A little of both</string>
@@ -219,8 +215,7 @@ color:rgb(78, 78, 78)</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(255, 255, 255);
-color:rgb(78, 78, 78)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Crisp</string>

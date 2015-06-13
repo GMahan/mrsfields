@@ -113,8 +113,7 @@ color:rgb(78, 78, 78)</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(255, 255, 255);
-color:rgb(78, 78, 78)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Select cookie size</string>

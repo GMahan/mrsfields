@@ -27,7 +27,7 @@ class FlavorScreen : public Screen
         ~FlavorScreen();
 
         bool Init();
-        void Reset();
+        void ResetScreen();
 
     signals:
 
@@ -61,6 +61,7 @@ protected:
         bool m_flavorSelected;
         bool m_optionSelected;
 
+        void SetLabelFontProperties();
         void InitializeFlavors();
         void UpdateNextButtonState();
         void ShowFlavorOptions();

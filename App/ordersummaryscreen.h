@@ -18,11 +18,21 @@ public:
     ~OrderSummaryScreen();
 
     bool Init();
-    void Reset();
+    void ResetScreen();
 
+private slots:
+
+    void BackButtonReleased();
+    void NextButtonReleased();
+
+protected:
+
+        void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
 
 private:
     Ui::OrderSummaryScreen *ui;
+
+    void SetFontProperties();
 };
 
 #endif // ORDERSUMMARYSCREEN_H

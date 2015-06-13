@@ -14,6 +14,8 @@ PackageScreen::PackageScreen(const Product &product, QWidget *parent, const QStr
 {
     ui->setupUi(this);
 
+    SetFontProperties();
+
     connect(ui->NextButton, SIGNAL(pressed()), this, SLOT(NextButtonReleased()));
     connect(ui->BackButton, SIGNAL(pressed()), this, SLOT(BackButtonReleased()));
 }
@@ -39,7 +41,7 @@ bool PackageScreen::Init()
 /**
  * @brief packagescreen::Reset
  */
-void PackageScreen::Reset()
+void PackageScreen::ResetScreen()
 {
 
 }
@@ -83,4 +85,30 @@ void PackageScreen::paintEvent(QPaintEvent *)
 {
     GuiCommon::PaintSeparator(this, QPoint(10, 35), QPoint(630, 35));
     GuiCommon::PaintSeparator(this, QPoint(10, 205), QPoint(630, 205));
+}
+
+/**
+ * @brief PackageScreen::SetFontProperties
+ */
+void PackageScreen::SetFontProperties()
+{
+    ui->BothLabel->setFont(GuiCommon::GetUILabelFont());
+    ui->BothLabel->setStyleSheet(GuiCommon::GetUILableStyleSheet());
+    ui->BothLabel->adjustSize();
+
+    ui->CrispLabel->setFont(GuiCommon::GetUILabelFont());
+    ui->CrispLabel->setStyleSheet(GuiCommon::GetUILableStyleSheet());
+    ui->CrispLabel->adjustSize();
+
+    ui->ChewyLabel->setFont(GuiCommon::GetUILabelFont());
+    ui->ChewyLabel->setStyleSheet(GuiCommon::GetUILableStyleSheet());
+    ui->ChewyLabel->adjustSize();
+
+    ui->SelectPackageLabel->setFont(GuiCommon::GetUILabelFont());
+    ui->SelectPackageLabel->setStyleSheet(GuiCommon::GetUILableStyleSheet());
+    ui->SelectPackageLabel->adjustSize();
+
+    ui->SelectCrispnessLabel->setFont(GuiCommon::GetUILabelFont());
+    ui->SelectCrispnessLabel->setStyleSheet(GuiCommon::GetUILableStyleSheet());
+    ui->SelectCrispnessLabel->adjustSize();
 }

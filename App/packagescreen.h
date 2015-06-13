@@ -29,7 +29,7 @@ public:
     ~PackageScreen();
 
     bool Init();
-    void Reset();
+    void ResetScreen();
 
 signals:
 
@@ -57,6 +57,9 @@ private:
     //QList<const *> m_sizeList;
     QList<QLabel *> m_packageLabels;
     QList<OptionBoxWidget *> m_sizeOptionWidgetList;
+
+    void SetFontProperties();
+
 };
 
 #endif // PACKAGESCREEN_H
