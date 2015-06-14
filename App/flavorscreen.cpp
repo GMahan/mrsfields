@@ -176,6 +176,7 @@ void FlavorScreen::InitializeFlavors()
         OptionBoxWidget *optionBox = new OptionBoxWidget(); // Create a new custom option box widget
         optionBox->SetOptionBoxImage(flavor->GetFlavorImageUrl());  // Set flavor image
         optionBox->SetOptionBoxLabel(flavor->GetFlavorName());  // Set flavor name
+        optionBox->SetLabelFont(GuiCommon::GetUILabelFont());
 
         ui->FlavorScrollArea->layout()->addWidget(optionBox);   // Add the widget to the scroll area
 
