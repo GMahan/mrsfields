@@ -22,7 +22,7 @@ Product::Product(const QString &productName, const QString &imageUrl, Product::P
 
 Cookie::Cookie() :
     Product("Cookie", COOKIE, e_ProductIDCookie),
-    m_chocolateChip(FlavorProperties("White Chocolate", WHITE_CHOCOLATE)),
+    m_chocolateChip(FlavorProperties("Chocolate", CC_URL)),
     m_peanutButter(FlavorProperties("Peanut Butter", PB_URL)),
     m_cinnamon(FlavorProperties("Cinnamon", CIN_URL)),
     m_sizeSmall(Size::e_SizeSmall, "Small", COOKIE, 1.30),

@@ -11,10 +11,14 @@
 OptionBoxWidget::OptionBoxWidget(QWidget *parent) :
     QPushButton(parent),
     m_selected(false),
+    m_imageUpdated(true),
+    m_labelUpdated(true),
     m_label(""),
-    m_imageUrl(""),
+    m_image(),
     m_selectedColor(Qt::darkRed),
-    m_unselectedColor(Qt::black)
+    m_unselectedColor(Qt::black),
+    m_font(),
+    m_iconSize(ICON_WIDTH, ICON_HEIGHT)
 {
     setMaximumSize(QSize(100,100));
 
@@ -34,11 +38,15 @@ QString OptionBoxWidget::GetOptionBoxLabel() const
 void OptionBoxWidget::SetOptionBoxLabel(const QString &label)
 {
     m_label = label;
+    m_labelUpdated = false;
+    update();
 }
 
 void OptionBoxWidget::SetOptionBoxImage(const QString &imageUrl)
 {
-    m_imageUrl = imageUrl;
+    m_image.load(imageUrl);
+    m_imageUpdated = false;
+    update();
 }
 
 void OptionBoxWidget::SetOptionBoxState(bool state)
@@ -55,6 +63,8 @@ void OptionBoxWidget::SetLabelFont(const QFont &font)
         m_font.setPointSize(12);
     }
 
+    m_labelUpdated = false;
+    update();
 }
 
 void OptionBoxWidget::SetSelectionColor(const QColor &color)
@@ -84,49 +94,39 @@ bool OptionBoxWidget::GetCheckedState() const
 
 void OptionBoxWidget::paintEvent(QPaintEvent *)
 {
-    int imageWidth = 60;
-    int imageHeight = 60;
-    int bgX = 5;
-    int bgY = 5;
-    int bgWidth = 90;
-    int bgHeight = 70;
-    int textY = 75;
-
-    QSize imageSize(imageWidth, imageHeight);
-    QPoint imageLocation((width() / 2) - (imageWidth / 2) , (bgY + bgHeight / 2) - (imageHeight / 2));
-
-    QSize imageBgSize(bgWidth, bgHeight);
-    QPoint imageBgLocation(bgX, bgY);
-
-    QRectF imageRect(imageLocation, imageSize);
-    QRectF sourceRect(QPoint(0,0), imageSize);
-
-    QImage image(m_imageUrl);
-    QImage scaledImage = image.scaled(imageSize, Qt::KeepAspectRatio);
-
-    QBrush brush(m_selected ? m_selectedColor : m_unselectedColor);
-
     QPainter painter(this);
     painter.setRenderHints(QPainter::SmoothPixmapTransform);
     painter.setPen(Qt::NoPen);
-    painter.setFont(m_font);
+    painter.setBrush(QBrush(m_selected ? m_selectedColor : m_unselectedColor));
 
-    painter.setBrush(brush);
     painter.drawRect(QRect(QPoint(0,0), size())); // Paint widget
 
-    brush.setColor(Qt::white);
-    painter.setBrush(brush);
-    painter.drawRect(QRect(imageBgLocation, imageBgSize)); // Paint image background
-    painter.drawImage(imageRect, scaledImage, sourceRect); // Paint image
+    painter.setBrush(QBrush(Qt::white)); // paint image background color white
+
+    QSize imageBgSize(BG_WIDTH, BG_HEIGHT);
+    QPoint imageBgLocation(BG_X_OFFSET, BG_Y_OFFSET);
+
+    painter.drawRect(QRect(imageBgLocation,
+                           imageBgSize)); // Paint image background
+
+
+    QPoint imageLocation((width() / 2) - (ICON_WIDTH / 2) ,
+                         (BG_Y_OFFSET + BG_HEIGHT / 2) - (ICON_HEIGHT / 2));
+
+    painter.drawImage(QRectF(imageLocation, m_iconSize),
+                      QImage(m_image.scaled(m_iconSize, Qt::KeepAspectRatio)),
+                      QRectF(QPoint(0,0), m_iconSize)); // Paint image
+
+
 
     QPen pen;
     pen.setColor(QColor(Qt::white));
     pen.setWidth(2);
+    painter.setFont(m_font);
     painter.setPen(pen);
-    painter.drawText(QRect(QPoint(0, textY), QSize(width(), 20)),
+    painter.drawText(QRect(QPoint(0, TEXT_Y_OFFSET), QSize(width(), 20)),
                      Qt::AlignCenter,
                      m_label);
-
 }
 
 void OptionBoxWidget::Checked()

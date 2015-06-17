@@ -17,7 +17,7 @@ OrderSummaryWidget::OrderSummaryWidget(const QString &imageUrl, QWidget *parent)
 {
     ui->setupUi(this);
 
-    SetFontProperties(); // Set the font properties for the widget
+    SetFontProperties();
     InitializeLabelList(); // Initialize the label list
     SetDefaultLabelColors(); // Set the default colors
     ChangeActiveLabel(); // Change the active label color

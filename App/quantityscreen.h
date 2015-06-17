@@ -62,10 +62,6 @@ private:
     QList<const Size *> m_sizeList;
     QList<QLabel *> m_quantityLabels;
     QList<OptionBoxWidget *> m_sizeOptionWidgetList;
-
-
-
-
 };
 
 #endif // QUANTITYSCREEN_H

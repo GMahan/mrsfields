@@ -51,8 +51,7 @@ bool ScreenFlow::Start()
 {
     if (UpdateScreenStates()) {
 
-        m_currentScreen = m_screenList[Screen::eScreenType_Start].screen;
-        m_screenList[Screen::eScreenType_Start].screen->show();
+        ResetUI();
         return true;
     }
 
@@ -74,6 +73,7 @@ bool ScreenFlow::RegisterScreen(Screen *screen)
 
     connect(screen, SIGNAL(Next()), this, SLOT(DisplayNextScreen()));
     connect(screen, SIGNAL(Back()), this, SLOT(DisplayPrevScreen()));
+    connect(screen, SIGNAL(Reset()), this, SLOT(ResetUI()));
 
     return true;
 }
@@ -112,6 +112,21 @@ void ScreenFlow::DisplayPrevScreen()
    m_currentScreen->show();
 
    emit ScreenPrevious();
+}
+
+/**
+ * @brief ScreenFlow::ResetUI
+ */
+void ScreenFlow::ResetUI()
+{
+    foreach (ScreenState screen, m_screenList) {
+
+        screen.screen->ResetScreen();
+        screen.screen->hide();
+    }
+
+    m_currentScreen = m_screenList[Screen::eScreenType_Start].screen;
+    m_currentScreen->show();
 }
 
 /**

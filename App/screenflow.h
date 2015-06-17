@@ -46,6 +46,8 @@ class ScreenFlow : public QObject
 
        void DisplayNextScreen();
        void DisplayPrevScreen();
+       void ResetUI();
+
    private:
 
        QVector<ScreenState> m_screenList;

@@ -60,7 +60,14 @@ bool FlavorScreen::Init()
  */
 void FlavorScreen::ResetScreen()
 {
+    if(m_flavorSelected) // Previously selected flavor
+    {
+        m_flavorWidgetList.at(m_flavorSelectionIndex)->SetOptionBoxState(false); // Reset the previously selected option box
+        ClearFlavorOptions();
+    }
 
+    m_flavorSelected = false;
+    m_flavorSelectionIndex = 0;
 }
 
 /**
@@ -173,7 +180,7 @@ void FlavorScreen::InitializeFlavors()
     // Create an individual box container for each of the flavors.
     foreach (const Flavor *flavor, m_flavors)
     {
-        OptionBoxWidget *optionBox = new OptionBoxWidget(); // Create a new custom option box widget
+        OptionBoxWidget *optionBox = new OptionBoxWidget(this); // Create a new custom option box widget
         optionBox->SetOptionBoxImage(flavor->GetFlavorImageUrl());  // Set flavor image
         optionBox->SetOptionBoxLabel(flavor->GetFlavorName());  // Set flavor name
         optionBox->SetLabelFont(GuiCommon::GetUILabelFont());
@@ -218,10 +225,11 @@ void FlavorScreen::ShowFlavorOptions()
 
     foreach (const FlavorProperties *option, flavorOptions)
     {
-        OptionBoxWidget *optionBox = new OptionBoxWidget;
+        OptionBoxWidget *optionBox = new OptionBoxWidget();
 
         optionBox->SetOptionBoxImage(option->GetOptionImageUrl());
         optionBox->SetOptionBoxLabel(option->GetOptionName());
+        optionBox->SetLabelFont(GuiCommon::GetUILabelFont());
 
         ui->AdditionalOptionScrollArea->layout()->addWidget(optionBox);
 

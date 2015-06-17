@@ -24,4 +24,8 @@
         <file>Images/WhiteChocolate.png</file>
         <file>Images/Cookie.png</file>
     </qresource>
+    <qresource prefix="/Package">
+        <file>Images/BasketPackage.jpg</file>
+        <file>Images/BoxPackage.jpg</file>
+    </qresource>
 </RCC>

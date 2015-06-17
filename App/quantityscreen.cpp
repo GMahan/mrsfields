@@ -122,6 +122,7 @@ void QuantityScreen::InitalizeSizeWidgets()
         sizeOption->setObjectName(size->GetName());
         sizeOption->SetOptionBoxImage(size->GetImageURL());
         sizeOption->SetOptionBoxLabel(size->GetName() + " - $" + QString::number(size->GetPrice(), 'f', 2));
+        sizeOption->SetLabelFont(GuiCommon::GetUILabelFont());
 
         // Add option box to layout
         ui->SizeScrollArea->layout()->addWidget(sizeOption);

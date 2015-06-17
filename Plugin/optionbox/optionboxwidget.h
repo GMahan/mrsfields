@@ -17,6 +17,15 @@ class OptionBoxWidget : public QPushButton
     Q_OBJECT
 
     public:
+
+        static const int ICON_WIDTH = 60;
+        static const int ICON_HEIGHT = 60;
+        static const int BG_X_OFFSET = 5;
+        static const int BG_Y_OFFSET = 5;
+        static const int BG_WIDTH = 90;
+        static const int BG_HEIGHT = 70;
+        static const int TEXT_Y_OFFSET = 75;
+
         explicit OptionBoxWidget(QWidget *parent = 0);
         ~OptionBoxWidget();
 
@@ -47,11 +56,15 @@ class OptionBoxWidget : public QPushButton
     private:
 
         bool m_selected;
+        bool m_imageUpdated;
+        bool m_labelUpdated;
         QString m_label;
-        QString m_imageUrl;
+        QImage m_image;
         QColor m_selectedColor;
         QColor m_unselectedColor;
         QFont m_font;
+        QSize m_iconSize;
+
         //Ui::OptionBoxWidget *ui;
 
         void UpdateOptionBoxImage();
