@@ -28,11 +28,12 @@ public:
 
 private slots:
 
-    void NextScreen();
-    void PreviousScreen();
     void FlavorSelected(QString flavor);
     void QuantitySelected(int quantity);
     void SizeSelected(const Size &size);
+    void ShowSummaryWidget();
+    void HideSummaryWidget();
+    void Reset();
 
 private:
 

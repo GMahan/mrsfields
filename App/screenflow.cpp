@@ -92,8 +92,7 @@ void ScreenFlow::DisplayNextScreen()
     m_currentScreen->hide(); // Hide current screen
     m_currentScreen = m_screenList[m_currentScreen->GetScreenType()].next;
     m_currentScreen->show();
-
-    emit ScreenNext();
+    EmitCurrentScreenSignal();
 }
 
 /**
@@ -110,8 +109,7 @@ void ScreenFlow::DisplayPrevScreen()
    m_currentScreen->hide(); // Hide current screen
    m_currentScreen = m_screenList[m_currentScreen->GetScreenType()].previous;
    m_currentScreen->show();
-
-   emit ScreenPrevious();
+   EmitCurrentScreenSignal();
 }
 
 /**
@@ -127,6 +125,8 @@ void ScreenFlow::ResetUI()
 
     m_currentScreen = m_screenList[Screen::eScreenType_Start].screen;
     m_currentScreen->show();
+
+    emit ScreensReset();
 }
 
 /**
@@ -181,6 +181,33 @@ bool ScreenFlow::UpdateScreenStates()
     }
 
     return true;
+}
+
+void ScreenFlow::EmitCurrentScreenSignal()
+{
+    switch (m_currentScreen->GetScreenType())
+    {
+        case Screen::eScreenType_Start:
+            emit StartScreen();
+            break;
+        case Screen::eScreenType_Flavor:
+            emit FlavorSelectionScreen();
+            break;
+        case Screen::eScreenType_Quantity_Size:
+            emit QuantitySizeScreen();
+            break;
+        case Screen::eScreenType_Package_Crisp:
+            emit PackageCrispScreen();
+            break;
+        case Screen::eScreenType_OrderSummary:
+            emit SummaryScreen();
+            break;
+        case Screen::eScreenType_Processing:
+            emit WaitScreen();
+            break;
+        default:
+            break;
+     }
 }
 
 

@@ -39,8 +39,13 @@ class ScreenFlow : public QObject
 
    signals:
 
-       void ScreenNext();
-       void ScreenPrevious();
+       void ScreensReset();
+       void StartScreen();
+       void FlavorSelectionScreen();
+       void QuantitySizeScreen();
+       void PackageCrispScreen();
+       void SummaryScreen();
+       void WaitScreen();
 
    private slots:
 
@@ -56,6 +61,7 @@ class ScreenFlow : public QObject
 
        bool AppendToScreenList(Screen *screenToAdd);
        bool UpdateScreenStates();
+       void EmitCurrentScreenSignal();
 
 };
 

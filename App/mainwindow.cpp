@@ -39,11 +39,15 @@ MainWindow::MainWindow(const Product &product, QWidget *parent) :
         connect(screen, SIGNAL(FlavorSelection(QString)), this, SLOT(FlavorSelected(QString)));
         connect(screen, SIGNAL(QuantitySelected(int)), this, SLOT(QuantitySelected(int)));
         connect(screen, SIGNAL(SizeSelected(const Size &)), this, SLOT(SizeSelected(const Size &)));
-
     }
 
-    connect(&m_screenFlow, SIGNAL(ScreenNext()), this, SLOT(NextScreen()));
-    connect(&m_screenFlow, SIGNAL(ScreenPrevious()), this, SLOT(PreviousScreen()));
+    connect(&m_screenFlow, SIGNAL(StartScreen()), this, SLOT(HideSummaryWidget()));
+    connect(&m_screenFlow, SIGNAL(FlavorSelectionScreen()), this, SLOT(ShowSummaryWidget()));
+    connect(&m_screenFlow, SIGNAL(QuantitySizeScreen()), this, SLOT(ShowSummaryWidget()));
+    connect(&m_screenFlow, SIGNAL(PackageCrispScreen()), this, SLOT(ShowSummaryWidget()));
+    connect(&m_screenFlow, SIGNAL(WaitScreen()), this, SLOT(HideSummaryWidget()));
+    connect(&m_screenFlow, SIGNAL(SummaryScreen()), this, SLOT(HideSummaryWidget()));
+    connect(&m_screenFlow, SIGNAL(ScreensReset()), this, SLOT(Reset()));
 }
 
 /**
@@ -72,22 +76,6 @@ bool MainWindow::Start()
     }
 
     return status;
-}
-
-/**
- * @brief MainWindow::NextScreen
- */
-void MainWindow::NextScreen()
-{
-    qDebug() << "NEXT";
-}
-
-/**
- * @brief MainWindow::PreviousScreen
- */
-void MainWindow::PreviousScreen()
-{
-    qDebug() << "PREVIOUS";
 }
 
 /**
@@ -121,6 +109,30 @@ void MainWindow::SizeSelected(const Size &size)
 }
 
 /**
+ * @brief MainWindow::ScreenUpdated
+ */
+void MainWindow::ShowSummaryWidget()
+{
+    m_summaryWidget.show();
+}
+
+/**
+ * @brief MainWindow::HideSummaryWidget
+ */
+void MainWindow::HideSummaryWidget()
+{
+    m_summaryWidget.hide();
+}
+
+/**
+ * @brief MainWindow::Reset
+ */
+void MainWindow::Reset()
+{
+    m_summaryWidget.Reset();
+}
+
+/**
  * @brief MainWindow::InitializeOrderProgressWidget
  */
 void MainWindow::InitializeOrderProgressWidget()
@@ -136,7 +148,7 @@ void MainWindow::InitializeOrderProgressWidget()
     m_summaryWidget.move(SUMMARY_WIDGET_LOCATION);
     m_summaryWidget.raise();
 
-    m_summaryWidget.Reset();
+    Reset();
 }
 
 /**
